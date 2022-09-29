@@ -3,20 +3,12 @@ import Head from "next/head";
 import Image from "next/image";
 import { useEffect } from "react";
 import axios from "axios";
-import Calculator from "../components/calculator";
+import Trash from "../../components/Trash.js";
 
 const Home: NextPage = () => {
-  useEffect(() => {
-    const getData = async () => {
-      const data = await axios.post("/api/hello");
-      console.log(data.data.name);
-    };
-    getData();
-  }, []);
-
   return (
     <div>
-      <Calculator />
+      <Trash />
     </div>
   );
 };
