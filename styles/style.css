@@ -123,7 +123,7 @@
     /* grid-row: 2/ 7; */
   /* } */
   .display-screen {
-    font-size: 3rem;
+    font-size: 5rem;
   }
   .nav-container {
     padding: 10px;
@@ -137,7 +137,7 @@
 }
 @media screen and (max-width: 400px) {
   .displayscreen-cont {
-    height: 5vh;
+    height: 10vh;
   }
   .display-screen {
     font-size: 2rem;
