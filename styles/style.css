@@ -142,6 +142,11 @@
     font-size: 2rem;
   }
 }
+@media (max-height: 800px) {
+  .display-screen {
+    font-size: 2rem;
+  }
+}
 
 .nav-links{
   margin-right: 10px;
