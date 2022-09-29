@@ -93,6 +93,7 @@
 }
 
 .nav-container {
+  max-height: 9vh;
   padding: 8px;
   background-color: #424c52;
   display: flex;
@@ -115,7 +116,7 @@
   .calc-container {
     width: 100vw;
     margin: 0px;
-    height: 100vh;
+    height: 91vh;
     /* grid-template-rows: repeat(5, minmax(0, 1fr)); */
   }
   /* .numbers { */
@@ -136,11 +137,13 @@
 }
 @media screen and (max-width: 400px) {
   .displayscreen-cont {
-    height: 70px;
+    height: 5vh;
   }
   .display-screen {
     font-size: 2rem;
   }
+
+  
 }
 @media (max-height: 400px) {
   .display-screen {
