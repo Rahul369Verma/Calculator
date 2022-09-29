@@ -122,9 +122,7 @@
   /* .numbers { */
     /* grid-row: 2/ 7; */
   /* } */
-  .display-screen {
-    font-size: 5rem;
-  }
+
   .nav-container {
     padding: 10px;
   }
@@ -137,10 +135,11 @@
 }
 @media screen and (max-width: 400px) {
   .displayscreen-cont {
-    height: 10vh;
+    height: 9vh;
+    font-size: 1rem;
   }
   .display-screen {
-    font-size: 2rem;
+    font-size: 1rem;
   }
 
   
@@ -152,7 +151,7 @@
 }
 @media (max-height: 600px) {
   .display-screen {
-    font-size: 2rem;
+    font-size: 1rem;
   }
 }
 @media (max-height: 800px) {
