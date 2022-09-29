@@ -93,7 +93,7 @@
 }
 
 .nav-container {
-  /* padding: 8px; */
+  padding: 8px;
   background-color: #424c52;
   display: flex;
   justify-content: space-between;
@@ -142,9 +142,19 @@
     font-size: 2rem;
   }
 }
-@media (max-height: 800px) {
+@media (max-height: 400px) {
+  .display-screen {
+    font-size: 1rem;
+  }
+}
+@media (max-height: 600px) {
   .display-screen {
     font-size: 2rem;
+  }
+}
+@media (max-height: 800px) {
+  .display-screen {
+    font-size: 3rem;
   }
 }
 
