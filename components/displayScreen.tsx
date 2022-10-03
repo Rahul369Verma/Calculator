@@ -1,7 +1,7 @@
 /*eslint-disable*/
-import React from 'react';
+import React, { FC } from 'react';
 
-const DisplayScreen = (props) => {
+const DisplayScreen: FC<{ total: string | null, next:  string | null, operation:  string | null}>  = (props) => {
   const { total, next, operation } = props;
   return (
     <div className="displayscreen-cont">

@@ -3,6 +3,9 @@ import React, { useEffect, useState } from 'react'
 export default function History() {
   const [history, setHistory] = useState([])
 
+  type ofItem = { one: string; two: string; result: string; operation: string };
+
+  
   useEffect(() => {
     const data = localStorage.getItem('history')
     if (data) {
@@ -10,7 +13,7 @@ export default function History() {
     }
   }, [])
 
-  const handleDelete = (value) => {
+  const handleDelete = (value: ofItem) => {
     let temp = history.filter((item) => {
       console.log(item, value);
       return item !== value
@@ -20,10 +23,7 @@ export default function History() {
     localStorage.setItem('history', JSON.stringify(temp));
     setHistory(temp)
 
-    let trash = JSON.parse(localStorage.getItem("trash"));
-    if (!trash) {
-      trash = [];
-    }
+    let trash: ofItem[] = JSON.parse(localStorage.getItem("trash") || "[]");
     let tempObject = value;
     trash.push(tempObject);
 
@@ -41,7 +41,7 @@ export default function History() {
           <div className="col-table col-table-3">Result</div>
           <div className="col-table col-table-4">Actions</div>
         </li>
-        {history.map((item, index) => (
+        {history.map((item: ofItem, index) => (
           <li className="table-row" key={index}>
             <div className="col-table col-table-1" data-label="id">{index}</div>
             <div className="col-table col-table-2" data-label="calculation">{item.one} {item.operation} {item.two}</div>

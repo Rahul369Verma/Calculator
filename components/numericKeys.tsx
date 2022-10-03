@@ -1,14 +1,14 @@
 /*eslint-disable*/
 
-import React, { useEffect } from 'react';
+import React, { FC, useEffect } from 'react';
 
-const NumberKeys = (props) => {
+const NumberKeys: FC<{ handleClick: (value: string) => void }>  = (props) => {
 
 
   const { handleClick } = props;
 
   useEffect(() => {
-    const onScroll = e => {
+    const onScroll = (e: any) => {
       // e.preventDefault();
       console.log(e.key)
       if (e.key === "0" || e.key === "1" || e.key === "2" || e.key === "3" || e.key === "4" || e.key === "5" || e.key === "6"

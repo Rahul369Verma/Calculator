@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders DisplayScreen correctly 1`] = `
+<div
+  className="displayscreen-cont"
+>
+  <span
+    className="display-screen"
+  >
+    38
+    +
+    22
+  </span>
+</div>
+`;

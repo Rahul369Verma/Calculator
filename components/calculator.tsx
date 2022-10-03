@@ -1,13 +1,22 @@
 // import { render } from '@testing-library/react';
-import React, { useState } from 'react';
-import DisplayScreen from './displayScreen';
-import NumericKeys from './numericKeys';
-import OperatorKeys from './operatorkeys';
-import calculate from './logic/calculate';
-
+import React, { useState } from "react";
+import DisplayScreen from "./displayScreen";
+import NumericKeys from "./numericKeys";
+import OperatorKeys from "./operatorkeys";
+import calculate from "./logic/calculate";
 
 const Calculator = () => {
-  const [state, setState] = useState({
+  type ofItem = {
+    total: string | null;
+    next: string | null;
+    operation: string | null;
+  };
+
+  type UserData = {
+    obj: ofItem;
+  };
+
+  const [state, setState] = useState<UserData>({
     obj: {
       total: null,
       next: null,
@@ -15,10 +24,9 @@ const Calculator = () => {
     },
   });
 
-
-  const handleClick = (value) => {
+  const handleClick = (value: string) => {
     const { obj } = state;
-    const temp = calculate(obj, value);
+    const temp: ofItem = calculate(obj, value);
     setState({ obj: temp });
   };
 

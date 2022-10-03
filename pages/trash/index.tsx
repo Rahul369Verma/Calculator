@@ -3,7 +3,7 @@ import Head from "next/head";
 import Image from "next/image";
 import { useEffect } from "react";
 import axios from "axios";
-import Trash from "../../components/Trash.js";
+import Trash from "../../components/Trash";
 
 const Home: NextPage = () => {
   return (

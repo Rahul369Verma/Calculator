@@ -3,7 +3,7 @@ import "../styles/style.css";
 import "../styles/history.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import type { AppProps } from "next/app";
-import Navbar from "../components/NavBar.js";
+import Navbar from "../components/NavBar";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (

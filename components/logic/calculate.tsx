@@ -1,6 +1,6 @@
-import operate from './operate';
+import operate from "./operate";
 
-function isNumber(item) {
+function isNumber(item: string) {
   return !!item?.match(/[0-9]+/);
 }
 
@@ -13,15 +13,21 @@ function isNumber(item) {
  *   next:String       the next number to be operated on with the total
  *   operation:String  +, -, etc.
  */
-export default function calculate(obj, buttonName) {
-  if (buttonName === 'AC') {
+type ofItem = {
+  total: string | null;
+  next: string | null;
+  operation: string | null;
+};
+
+export default function calculate(obj: ofItem, buttonName: string): ofItem {
+  if (buttonName === "AC") {
     return {
       total: null,
       next: null,
       operation: null,
     };
   }
-  if (buttonName === 'CE') {
+  if (buttonName === "CE") {
     if (obj.next) {
       return {
         ...obj,
@@ -46,19 +52,20 @@ export default function calculate(obj, buttonName) {
   }
 
   if (isNumber(buttonName)) {
-    if (buttonName === '0' && obj.next === '0') {
-      return {};
+    if (buttonName === "0" && obj.next === "0") {
+      return { ...obj };
     }
     // If there is an operation, update next
     if (obj.operation) {
-      if (obj.next && obj.next !== '0') {
+      if (obj.next && obj.next !== "0") {
         return { ...obj, next: obj.next + buttonName };
       }
       return { ...obj, next: buttonName };
     }
     // If there is no operation, update next and clear the value
-    if (obj.next && obj.next !== '0') {
+    if (obj.next && obj.next !== "0") {
       return {
+        ...obj,
         next: obj.next + buttonName,
         total: null,
       };
@@ -70,45 +77,51 @@ export default function calculate(obj, buttonName) {
       };
     }
     return {
+      ...obj,
       next: buttonName,
       total: null,
     };
   }
 
-  if (buttonName === '.') { // .  =>
+  if (buttonName === ".") {
+    // .  =>
     if (obj.next) {
-      if (obj.next.includes('.')) { // 0
+      if (obj.next.includes(".")) {
+        // 0
         return { ...obj };
       }
       return { ...obj, next: `${obj.next}.` };
     }
-    if (obj.operation) { // 0.7 *
-      return { ...obj, next: '0.' };
+    if (obj.operation) {
+      // 0.7 *
+      return { ...obj, next: "0." };
     }
-    if (obj.total) { // 0
-      if (obj.total.includes('.')) {
+    if (obj.total) {
+      // 0
+      if (obj.total.includes(".")) {
         return { ...obj };
       }
       return { ...obj, total: `${obj.total}.` };
     }
-    return { ...obj, next: '0.' };
+    return { ...obj, next: "0." };
   }
 
-  if (buttonName === '=') {
-    if (obj.next && obj.operation) {
+  if (buttonName === "=") {
+    if (obj.next && obj.operation && obj.total) {
+      let result = operate(obj.total, obj.next, obj.operation);
 
-      let result = operate(obj.total, obj.next, obj.operation)
+      let history = JSON.parse(localStorage.getItem("history") || "[]");
 
-      let history = JSON.parse(localStorage.getItem("history"));
-      console.log(history);
-      if (!history) {
-        history = [];
-      }
-      let tempObject = { 'one': obj.total, 'two': obj.next, 'operation': obj.operation, 'result': result };
+      let tempObject = {
+        one: obj.total,
+        two: obj.next,
+        operation: obj.operation,
+        result: result,
+      };
       history.push(tempObject);
 
       // Put the object into storage
-      localStorage.setItem('history', JSON.stringify(history));
+      localStorage.setItem("history", JSON.stringify(history));
       return {
         total: result,
         next: null,
@@ -119,14 +132,14 @@ export default function calculate(obj, buttonName) {
     return { ...obj };
   }
 
-  if (buttonName === '+/-') {
+  if (buttonName === "+/-") {
     if (obj.next) {
       return { ...obj, next: (-1 * parseFloat(obj.next)).toString() };
     }
     if (obj.total) {
       return { ...obj, total: (-1 * parseFloat(obj.total)).toString() };
     }
-    return {};
+    return { ...obj };
   }
 
   // User pressed an operation after pressing '='
@@ -141,19 +154,25 @@ export default function calculate(obj, buttonName) {
     }
 
     if (!obj.total) {
-      return { total: 0, operation: buttonName };
+      return { ...obj, total: "0", operation: buttonName };
     }
 
-    let result = operate(obj.total, obj.next, obj.operation)
-    let history = JSON.parse(localStorage.getItem("history"));
-    if (!history) {
-      history = [];
+    if (!obj.next) {
+      return { ...obj };
     }
-    let tempObject = { 'one': obj.total, 'two': obj.next, 'operation': obj.operation, 'result': result };
+
+    let result = operate(obj.total, obj.next, obj.operation);
+    let history = JSON.parse(localStorage.getItem("history") || "[]");
+    let tempObject = {
+      one: obj.total,
+      two: obj.next,
+      operation: obj.operation,
+      result: result,
+    };
     history.push(tempObject);
 
     // Put the object into storage
-    localStorage.setItem('history', JSON.stringify(history));
+    localStorage.setItem("history", JSON.stringify(history));
     return {
       total: result,
       next: null,
