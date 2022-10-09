@@ -6,8 +6,10 @@
   box-sizing: border-box;
   font-family: "Inter", sans-serif;
 }
-.ant-table-cell{
-  word-break: break-all;
+@media screen and (max-width: 768px) {
+  .ant-table-cell{
+    word-break: break-all;
+  } 
 }
 
 /* html {
