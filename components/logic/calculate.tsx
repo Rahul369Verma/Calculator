@@ -113,6 +113,9 @@ export default function calculate(obj: ofItem, buttonName: string): ofItem {
       let history = JSON.parse(localStorage.getItem("history") || "[]");
 
       let tempObject = {
+        id: history.length + 1,
+        createdDate: (new Date().toLocaleString()).split(",")[0],
+        createdTime: (new Date().toLocaleString()).split(",")[1],
         one: obj.total,
         two: obj.next,
         operation: obj.operation,
@@ -164,6 +167,9 @@ export default function calculate(obj: ofItem, buttonName: string): ofItem {
     let result = operate(obj.total, obj.next, obj.operation);
     let history = JSON.parse(localStorage.getItem("history") || "[]");
     let tempObject = {
+      id: history.length + 1,
+      createdDate: (new Date().toLocaleString()).split(",")[0],
+      createdTime: (new Date().toLocaleString()).split(",")[1],
       one: obj.total,
       two: obj.next,
       operation: obj.operation,

@@ -1,6 +1,7 @@
 import "../styles/globals.css";
 import "../styles/style.css";
 import "../styles/history.css";
+import 'antd/dist/antd.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import type { AppProps } from "next/app";
 import Navbar from "../components/NavBar";
