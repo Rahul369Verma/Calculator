@@ -6,6 +6,9 @@
   box-sizing: border-box;
   font-family: "Inter", sans-serif;
 }
+.ant-table-cell{
+  word-break: break-all;
+}
 
 /* html {
   font-size: calc(15px + 0.390625vw);

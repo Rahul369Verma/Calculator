@@ -166,7 +166,7 @@ const TrashTable: React.FC<{
       title: "Id",
       dataIndex: "id",
       key: "id",
-      width: "5%",
+      width: "8%",
       sorter: (a, b) => a.id - b.id,
       ...getColumnSearchProps("id"),
     },
@@ -179,7 +179,7 @@ const TrashTable: React.FC<{
         </span>
       ),
       key: "age",
-      width: "35%",
+      width: "32%",
       // ...getColumnSearchProps("calculation"),
     },
     {
@@ -194,6 +194,7 @@ const TrashTable: React.FC<{
       dataIndex: "createdDate",
       render: (text, record) => <span>{record.createdDate.split(",")[0]}</span>,
       key: "createdDate",
+      responsive: ["md"],
       width: "10%",
       ...getColumnSearchProps("createdDate"),
     },
@@ -202,6 +203,7 @@ const TrashTable: React.FC<{
       dataIndex: "createdTime",
       render: (text, record) => <span>{record.createdTime.split(",")[1]}</span>,
       key: "createdTime",
+      responsive: ["md"],
       width: "10%",
       ...getColumnSearchProps("createdTime"),
     },

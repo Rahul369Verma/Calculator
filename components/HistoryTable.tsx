@@ -165,7 +165,7 @@ const HistoryTable: React.FC<{
       title: "Id",
       dataIndex: "id",
       key: "id",
-      width: "5%",
+      width: "8%",
       sorter: (a, b) => a.id - b.id,
       ...getColumnSearchProps("id"),
     },
@@ -178,7 +178,7 @@ const HistoryTable: React.FC<{
         </span>
       ),
       key: "age",
-      width: "35%",
+      width: "32%",
       // ...getColumnSearchProps("calculation"),
     },
     {
@@ -193,7 +193,8 @@ const HistoryTable: React.FC<{
       dataIndex: "createdDate",
       // render: (text, record) => <span>{record.createdDate}</span>,
       key: "createdDate",
-      width: "15%",
+      width: "12%",
+      responsive: ["md"],
       ...getColumnSearchProps("createdDate"),
     },
     {
@@ -201,7 +202,8 @@ const HistoryTable: React.FC<{
       dataIndex: "createdTime",
       // render: (text, record) => <span>{record.createdTime}</span>,
       key: "createdTime",
-      width: "15%",
+      width: "12%",
+      responsive: ["md"],
       ...getColumnSearchProps("createdTime"),
     },
     {
@@ -232,7 +234,11 @@ const HistoryTable: React.FC<{
     // },
   ];
 
-  return <Table columns={columns} dataSource={data} />;
+  return (
+    <div>
+      <Table columns={columns} dataSource={data} />;
+    </div>
+  );
 };
 
 export default HistoryTable;

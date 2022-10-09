@@ -52,7 +52,9 @@ export default function History() {
   return (
     <div className="text-center my-3 container">
       <h2>History</h2>
-      <HistoryTable handleDelete={handleDelete} data={history} />
+      <div >
+        <HistoryTable handleDelete={handleDelete} data={history} />
+      </div>
       {/* <ul className="responsive-table">
         <li className="table-header">
           <div className="col-table col-table-1">Id</div>
