@@ -247,6 +247,7 @@ const HistoryTable: React.FC<{
         }}
         columns={columns}
         dataSource={data}
+        rowKey="id"
       />
       ;
     </div>

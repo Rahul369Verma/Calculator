@@ -253,6 +253,7 @@ const TrashTable: React.FC<{
       }}
       columns={columns}
       dataSource={data}
+      rowKey="id"
     />
   );
 };
