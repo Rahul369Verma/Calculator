@@ -195,7 +195,6 @@ export default function calculate(obj: ofItem, buttonName: string): ofItem {
     }
     let max = Math.max(historyMax, trashMax);
 
-    console.log(max, historyMax, trashMax);
     let tempObject = {
       id: max + 1 || 1,
       createdDate: new Date().toLocaleString().split(",")[0],

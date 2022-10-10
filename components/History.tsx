@@ -33,7 +33,6 @@ export default function History() {
 
   const handleDelete = (value: ofItem) => {
     let temp = history.filter((item) => {
-      console.log(item, value);
       return item !== value;
     });
 

@@ -33,7 +33,6 @@ const Calculator = () => {
   // const handleNumberClick = (event, value) => {
   //   const { obj } = state;
   //   const temp = calculate(obj, value);
-  //   console.log(temp);
   //   setState({ obj: temp });
   // };
 

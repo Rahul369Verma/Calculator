@@ -9,7 +9,6 @@ const Home: NextPage = () => {
   useEffect(() => {
     const getData = async () => {
       const data = await axios.post("/api/hello");
-      console.log(data.data.name);
     };
     getData();
   }, []);

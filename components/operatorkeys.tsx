@@ -7,7 +7,6 @@ const OperatorKeys: FC<{ handleClick: (value: string) => void }> = (props) => {
   useEffect(() => {
     const onScroll = (e: any) => {
       // e.preventDefault();
-      console.log(e.key);
       if (
         e.key === "%" ||
         e.key === "Backspace" ||
