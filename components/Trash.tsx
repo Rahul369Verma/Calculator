@@ -39,8 +39,8 @@ export default function Trash() {
   };
 
   return (
-    <div className="text-center my-3 container">
-      <h2>History</h2>
+    <div className="text-center my-3 common-container">
+      <h2>Trash</h2>
       <TrashTable handleDelete={handleDelete} handleRestore={handleRestore} data={trash} />
       {/* <ul className="responsive-table">
         <li className="table-header">
