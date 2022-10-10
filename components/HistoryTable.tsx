@@ -166,7 +166,10 @@ const HistoryTable: React.FC<{
       dataIndex: "id",
       key: "id",
       width: "8%",
+      showSorterTooltip: false,
+      // defaultSortOrder: "ascend",
       sorter: (a, b) => a.id - b.id,
+      sortDirections: ["descend"],
       ...getColumnSearchProps("id"),
     },
     {
@@ -177,14 +180,14 @@ const HistoryTable: React.FC<{
           {record.one} {record.operation} {record.two}
         </span>
       ),
-      key: "age",
+      key: "calculation",
       width: "32%",
       // ...getColumnSearchProps("calculation"),
     },
     {
       title: "Result",
       dataIndex: "result",
-      key: "age",
+      key: "result",
       width: "20%",
       // ...getColumnSearchProps("calculation"),
     },
@@ -219,7 +222,7 @@ const HistoryTable: React.FC<{
           </button>
         </span>
       ),
-      key: "createdTime",
+      key: "action",
       width: "15%",
       // ...getColumnSearchProps("createdTime"),
     },
@@ -236,7 +239,16 @@ const HistoryTable: React.FC<{
 
   return (
     <div>
-      <Table columns={columns} dataSource={data} />;
+      <Table
+        pagination={{
+          pageSizeOptions: ["5", "10", "15"],
+          showSizeChanger: true,
+          defaultPageSize: 5,
+        }}
+        columns={columns}
+        dataSource={data}
+      />
+      ;
     </div>
   );
 };

@@ -122,14 +122,14 @@ export default function calculate(obj: ofItem, buttonName: string): ofItem {
 
       let history = JSON.parse(localStorage.getItem("history") || "[]");
       let trash = JSON.parse(localStorage.getItem("trash") || "[]");
-      let historyMax = Math.max(...history.map((o: ObjectType) => o.id))
-      let trashMax = Math.max(...trash.map((o: ObjectType) => o.id))
+      let historyMax = Math.max(...history.map((o: ObjectType) => o.id));
+      let trashMax = Math.max(...trash.map((o: ObjectType) => o.id));
       let max = Math.max(historyMax, trashMax);
 
       let tempObject = {
         id: max + 1,
-        createdDate: (new Date().toLocaleString()).split(",")[0],
-        createdTime: (new Date().toLocaleString()).split(",")[1],
+        createdDate: new Date().toLocaleString().split(",")[0],
+        createdTime: new Date().toLocaleString().split(",")[1],
         one: obj.total,
         two: obj.next,
         operation: obj.operation,
@@ -181,14 +181,25 @@ export default function calculate(obj: ofItem, buttonName: string): ofItem {
     let result = operate(obj.total, obj.next, obj.operation);
     let history = JSON.parse(localStorage.getItem("history") || "[]");
     let trash = JSON.parse(localStorage.getItem("trash") || "[]");
-    let historyMax = Math.max(...history.map((o: ObjectType) => o.id))
-    let trashMax = Math.max(...trash.map((o: ObjectType) => o.id))
+    let historyMax;
+    if (history.length === 0) {
+      historyMax = 0;
+    } else {
+      historyMax = Math.max(...history.map((o: ObjectType) => o.id));
+    }
+    let trashMax;
+    if (trash.length === 0) {
+      trashMax = 0;
+    } else {
+      trashMax = Math.max(...trash.map((o: ObjectType) => o.id));
+    }
     let max = Math.max(historyMax, trashMax);
 
+    console.log(max, historyMax, trashMax);
     let tempObject = {
-      id: max + 1,
-      createdDate: (new Date().toLocaleString()).split(",")[0],
-      createdTime: (new Date().toLocaleString()).split(",")[1],
+      id: max + 1 || 1,
+      createdDate: new Date().toLocaleString().split(",")[0],
+      createdTime: new Date().toLocaleString().split(",")[1],
       one: obj.total,
       two: obj.next,
       operation: obj.operation,

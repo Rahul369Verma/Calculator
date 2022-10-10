@@ -16,9 +16,18 @@ export default function Trash() {
 
 
   useEffect(() => {
+    function compare(a: ofItem, b: ofItem) {
+      if (a.id < b.id) {
+        return -1;
+      }
+      if (a.id > b.id) {
+        return 1;
+      }
+      return 0;
+    }
     const data = localStorage.getItem("trash");
     if (data) {
-      setTrash(JSON.parse(data));
+      setTrash(JSON.parse(data).sort(compare));
     }
   }, []);
 

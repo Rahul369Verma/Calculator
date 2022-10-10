@@ -62,7 +62,7 @@ const TrashTable: React.FC<{
   handleRestore: (value: ofItem) => void;
   data: ofItem[];
 }> = (props) => {
-  const { handleDelete,handleRestore, data } = props;
+  const { handleDelete, handleRestore, data } = props;
   const [searchText, setSearchText] = useState("");
   const [searchedColumn, setSearchedColumn] = useState("");
   const searchInput = useRef<InputRef>(null);
@@ -167,7 +167,10 @@ const TrashTable: React.FC<{
       dataIndex: "id",
       key: "id",
       width: "8%",
+      showSorterTooltip: false,
+      // defaultSortOrder: "ascend",
       sorter: (a, b) => a.id - b.id,
+      sortDirections: ["descend"],
       ...getColumnSearchProps("id"),
     },
     {
@@ -195,7 +198,7 @@ const TrashTable: React.FC<{
       render: (text, record) => <span>{record.createdDate.split(",")[0]}</span>,
       key: "createdDate",
       responsive: ["md"],
-      width: "10%",
+      width: "12%",
       ...getColumnSearchProps("createdDate"),
     },
     {
@@ -204,7 +207,7 @@ const TrashTable: React.FC<{
       render: (text, record) => <span>{record.createdTime.split(",")[1]}</span>,
       key: "createdTime",
       responsive: ["md"],
-      width: "10%",
+      width: "12%",
       ...getColumnSearchProps("createdTime"),
     },
     {
@@ -213,21 +216,21 @@ const TrashTable: React.FC<{
       render: (text, record) => (
         <span>
           <button
-            className="btn btn-success me-2 common-button"
-            onClick={() => handleRestore(record)}
-          >
-            Restore
-          </button>
-          <button
-            className="btn btn-danger common-button"
+            className="btn btn-danger me-2 common-button first"
             onClick={() => handleDelete(record)}
           >
             Delete
           </button>
+          <button
+            className="btn btn-success common-button"
+            onClick={() => handleRestore(record)}
+          >
+            Restore
+          </button>
         </span>
       ),
       key: "createdTime",
-      width: "25%",
+      width: "15%",
       // ...getColumnSearchProps("createdTime"),
     },
     // {
@@ -241,7 +244,17 @@ const TrashTable: React.FC<{
     // },
   ];
 
-  return <Table columns={columns} dataSource={data} />;
+  return (
+    <Table
+      pagination={{
+        pageSizeOptions: ["5", "10", "15"],
+        showSizeChanger: true,
+        defaultPageSize: 5,
+      }}
+      columns={columns}
+      dataSource={data}
+    />
+  );
 };
 
 export default TrashTable;
