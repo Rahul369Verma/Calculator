@@ -11,7 +11,16 @@
     word-break: break-all;
   } 
 }
-
+@media screen and (min-width: 768px) {
+  .common-container{
+    margin: 0 5% 0 5%;
+  }
+}
+@media screen and (max-width: 768px) {
+  .common-button{
+    word-break: keep-all !important;
+  }
+}
 /* html {
   font-size: calc(15px + 0.390625vw);
 } */

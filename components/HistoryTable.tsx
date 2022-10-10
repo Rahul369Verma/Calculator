@@ -212,7 +212,7 @@ const HistoryTable: React.FC<{
       render: (text, record) => (
         <span>
           <button
-            className="btn btn-danger"
+            className="btn btn-danger common-button"
             onClick={() => handleDelete(record)}
           >
             Trash

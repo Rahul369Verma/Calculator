@@ -50,7 +50,7 @@ export default function History() {
   };
 
   return (
-    <div className="text-center my-3 container">
+    <div className="text-center my-3 common-container">
       <h2>History</h2>
       <div >
         <HistoryTable handleDelete={handleDelete} data={history} />

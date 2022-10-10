@@ -213,13 +213,13 @@ const TrashTable: React.FC<{
       render: (text, record) => (
         <span>
           <button
-            className="btn btn-success me-2"
+            className="btn btn-success me-2 common-button"
             onClick={() => handleRestore(record)}
           >
             Restore
           </button>
           <button
-            className="btn btn-danger"
+            className="btn btn-danger common-button"
             onClick={() => handleDelete(record)}
           >
             Delete
