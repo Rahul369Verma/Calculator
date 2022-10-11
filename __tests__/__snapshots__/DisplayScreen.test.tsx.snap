@@ -5,7 +5,7 @@ exports[`renders DisplayScreen correctly 1`] = `
   className="displayscreen-cont"
 >
   <span
-    className="display-screen"
+    className="display-screen ps-2"
   >
     38
     +

@@ -8,7 +8,7 @@ exports[`renders Calculator correctly 1`] = `
     className="displayscreen-cont"
   >
     <span
-      className="display-screen"
+      className="display-screen ps-2"
     >
       0
     </span>
