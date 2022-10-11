@@ -37,7 +37,21 @@ export default function calculate(obj: ofItem, buttonName: string): ofItem {
       operation: null,
     };
   }
+
+  if (obj.total === "Infinity" || obj.total === "NaN") {
+    return {
+      total: null,
+      next: null,
+      operation: null,
+    };
+  }
   if (buttonName === "CE") {
+    if (obj.total === null) {
+      return { ...obj };
+    }
+    if (!isNumber(obj.total)) {
+      return { ...obj, total: null };
+    }
     if (obj.next) {
       return {
         ...obj,
